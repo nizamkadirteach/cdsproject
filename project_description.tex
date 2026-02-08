@@ -1,0 +1,199 @@
+\documentclass[DIV12, oneside]{scrartcl}
+%\documentclass(a4paper, 12pt]{book}
+\date{}
+\usepackage[pdftex]{graphicx}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{soul,color}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+}
+
+\newcommand{\ans}[1]{\textcolor{red}{#1}}
+
+\begin{document}
+\title{Data science project description}
+\subtitle{50.038 Computational Data Science}
+\maketitle
+
+\begin{description}
+\item [Group:] 4 members. Register here by February 16th: \url{https://docs.google.com/spreadsheets/d/1gI9vyM9_TtpBd85A3T4Pzb2weUzKpJwujhXpSGad5BQ/edit?usp=sharing}.  Groups can be across cohorts (as long as you find a time to all be there for the project presentations during cohort classes). Please fill in all the info \textbf{including your selected topic} for approval. 
+
+\item [Initial presentation:] Week 8
+
+\item [Final presentation:] Week 13 
+
+\item [Report:] Week 12 
+
+\item [Submission: ] Report in PDF form through eDimension
+
+\end{description}
+
+
+
+\section{Objective}
+
+The main objective of this project is to equip and familiarize students with the necessary skills to successfully complete a data science project, including data collection and processing, data exploration and visualization, identifying and formulating problems, user interface development, developing algorithms and models, designing experimental evaluations and discussing results, scientific writing and working in teams. %{\color{red} (may be too wordy, happy to reduce it further if necessary)}
+
+\section{Project Overview}
+
+For this project, students select a data science problem, such as those listed in the examplar section, or a newly proposed one. Based on their problem description, students then find multiple datasets and combine them, and implement innovative multi-modal solutions. Students will form a team comprising of exactly four members, and are expected to deliver two presentations and submit a final report which compares multiple approaches. Code should be submitted on GitHub and a link should be put in the report. The project needs to have a usable user interface. Details about the presentations and report are provided in the following sections. 
+
+When picking a project, make sure you use at least two datasets and have a multimodal approach if possible. 
+
+
+\section{Initial and Final Presentations}
+\label{sectPresentations}
+
+Two presentations are to be delivered for this project, and each team will be allocated 10 min (time to be confirmed based on number of groups) for each presentation. Details of the presentations are:
+\begin{itemize}
+\item For the initial check-off (Week 8), the teams should describe the type of dataset selected or collected, the problem they aim to address, extensive and visually nice data visualisation, and a \textbf{preliminary naive model with results} implemented based on one dataset. 
+\item For the final presentation (Week 13), the teams should briefly describe their datasets and problem, and elaborate more on the algorithms used, the type of evaluation, results obtained and their implications. \end{itemize}
+
+
+\section{Final Report and Required Sections}
+\label{sectReportFormat}
+
+Teams are expected to submit a report of max. 6,000 words, comprising the following sections. The report should be written in the style of a scientific conference or journal paper using the scientific typesetting system LaTeX (e.g. \url{overleaf.com}). The report will be graded based on the sections described below. 
+
+\begin{itemize}
+\item \textbf{Dataset and Collection:} Describe the {\em type of datasets} being used and the {\em source} where it is obtained from. If applicable, mention any data collection methodology or APIs used. Students are free to select existing datasets, or collect their own datasets. Best to use more than one dataset. 
+\item \textbf{Data Pre-processing:} Describe any pre-processing or data cleaning steps applied on the dataset.
+\item \textbf{Problem and Algorithm/Model:} Motivate and describe the problem that this project aims to address. Some examples of problems are predicting whether a stock will rise or fall over X days, or predicting the volume of stock activities on a specific day. Also, describe the algorithm or model that is used for solving the earlier defined problem, and briefly situate it in its context by citing related work (tip use bibtex in combination with Google Scholar). 
+\item \textbf{Evaluation Methodology:} Describe the methodology that is used to evaluate the effectiveness of the proposed algorithm. This section should cover how the dataset is being used in training and evaluation, and the types of evaluation metrics used. Can you compare with existing models/work? 
+\item \textbf{Results and Discussion:} Describe the results obtained and discuss the implications of these results or any other main findings observed during this project. Including the UI implementation description and screenshot. 
+\end{itemize}
+Apart from the sections listed above, teams are also welcome to include any other sections they deem necessary such as a brief literature review.
+
+\vspace{12pt}
+\noindent
+%Since this project will be written as a scientific paper, good projects can be submitted to a venue in co-authorship with their respective supervisors if the model contributes to new knowledge. 
+The professors will be available for supervision during the lab times and via email. You may also work with dedicated class-external supervisors. 
+
+
+\section{Deliverables and Grading}
+
+This project is worth a total of 40 marks. The deliverables and grading of this project is further divided into the following components:
+\begin{itemize}
+\item An initial presentation as described in Section~\ref{sectPresentations}. This component serves to provide feedback and check that there is progress. It is worth 5 marks.
+\item A final presentation as described in Section~\ref{sectPresentations}. This component is worth 10 marks
+\item A final report as described in Section~\ref{sectReportFormat}. This component is worth 20 marks. 
+\item Peer review (week 7 - 10 - 13). 5 points if you work together well in team. Each team member grades the others. 
+\end{itemize}
+ 
+The initial and final presentations will be conducted during the lectures of the respective weeks. Detailed schedules will be provided nearer to the presentations. The report is to be submitted in PDF format via eDimension.
+ 
+
+ 
+\section{Project exemplar}
+ \textbf{You are free to (and in fact encouraged!) to propose your own free topic. The below only serve as examples of possible projects. If you select any of the below projects, please contact the relevant advisor, as you could be connected to researchers in their lab working on similar topics that can support you. }
+
+
+
+\paragraph{Generated music AI detection}
+The task is to detect if a song is generated by AI or not (Suno, Udio, etc.). There is a limited dataset available (\url{https://huggingface.co/posts/nyuuzyou/391290114296515}). Datasets can also include huge sleeping-ai datasets mixed with existing songs from say jamendomaxcaps dataset. 
+You could expand this in the project, and use as a base for a predictive model. (Advisor/more info: Prof. D. Herremans) 
+
+
+% \paragraph{Predicting if a generative music model was trained on a certain song}
+% The task is different from a standard predictive task, and rather focuses on how we can determine if a generative model was trained on 
+% \textcolor{red}{Not enough? }
+
+\paragraph{Digital asset price/volatility prediction} traditional stock markets are highly sensitive to public opinion. This is even more so the case for cryptocurrencies. An analysis of different modalities (news, price data, market data), will be interesting to build either indicators or predictive models, using unique on-chain data sources like Quandl and Glassnode. One approach would be to perform clustering per time periods, so as to determine the market type, and try to predict this first. One could also include multimodal info, e.g. sentiment obtained from LLMs from news or podcasts. It can then be tested if this allows us to build better predictive models. (Advisor/more info: Prof. D. Herremans)
+
+
+\paragraph{NLP/LLMs for stock market indicators} there are lots of models out there to predict the stock market. The challenge, however, is to extract meaningful information out of the vast amount of data available to detect 'useful' information:
+\begin{itemize}
+    \item predict when a market crash will be happening, or predict when we move from a bull to a bear market based on information from Twitter, such as mentions of taper to predict US 10YR treasury daily yields; or X posts from top crypto influencers to see if it improves a basic price model. 
+\end{itemize} Alternative: in some markets, a basic trend strategy (turtle) would be good, in others, a reversal strategy works better. Can we predict which market we are in? We can create `indicators' for this task. 
+(Advisor/more info: Prof. D. Herremans)
+
+
+
+
+\paragraph{Music similarity detection } - with an eye on distributing royalties of AI generated music among training set. E.g. can we say a generated music is x\% similar to any of the training set pieces. Potentially based on embeddings such as MERT, or trained Triplet networks dedicated for harmony/melody/rhythm etc. What interesting insights can you find? Prof. DH
+
+
+\paragraph{Foundational k-line model} 
+A project for AI and finance savy student, which can be a great contribution. In this project you would build a huge model that takes as input ohlvc financial data that you gather from Bloomberg terminal. Then you need to set up a set of evaluation tasks to test such a model (volatility prediction, extreme prediction, pattern prediction etc.). Alternatively, focusing on the test suite is also an option (similar to HEAR benchmark and MARBLE in audio). Chronos is only other k-line model. Sithumi is working on this, it would be synergetic to team up. --with Prof. DH and PhD student Sithumi Wickramasinghe. 
+
+
+
+
+
+%Currently, the help I need most and is doable by students would be the expansion of our templates and datasets. Shall we give them bonus marks when they successfully make a pull request on either the pytorch template or dataset package in our lab? Once they are comfortable with the basics, we will see if they are interested in part time RA, then we can assign them more challenging tasks, which will be more related to our research.
+
+
+% \paragraph{Automatic Speech Recognition (ASR) related topics}
+% For beginners: Familiarize yourselves with a simple ASR model which takes Melspectrogram as input and predicts the phonemic sequence using the TIMIT dataset. AMAAI has a pytorch template to kickstart your project. \url{https://github.com/KinWaiCheuk/pytorch_template}
+% Once you are familiar with your first ASR, you can start exploring any (one or more) of the following ideas: 
+
+% \begin{itemize}
+% \item Experiment with different Melspectrogram parameters, such as n\_fft, n\_mels. Then report which parameters give the best or worst results, and their respective training time.
+% \item Experiment with other spectrogram types such as STFT and CQT. Which spectrogram type is better for speech?
+% \item Modify the model so that it predicts English characters or English words instead of the phonetics. Does the model predict characters or words better than phonetics? What is the reason for it?
+% \item After training a good model for phonetic predictions, can you apply the same model to other tasks in the same dataset such as speaker recognition, or dialect classification? You will need to change the classifier for other tasks and freeze the weight for the feature extractor part.
+% \item Explore different model architectures to make the prediction accuracy as high as possible
+% \item Train a ASR model on other languages. For example, German or Polish in Multilingual LibriSpeech (MLS) (Or any other languages that you like). How does your model performance in various languages? What are the difficulties for training a ASR on other languages and how do you overcome them? You might want to check what datasets are available in the AMAAI lab first \url{https://github.com/KinWaiCheuk/AudioLoader}
+% \end{itemize}
+
+% Contact \url{kinwai_cheuk@mymail.sutd.edu.sg} for more info. 
+
+
+% \paragraph{Automatic Music Transcription (AMT) related topics}
+% For beginners: Familiarize yourselves with a simple AMT model using the MAPS dataset
+% AMAAI has a pytorch template to kickstart your project. \url{https://github.com/KinWaiCheuk/pytorch_template} 
+% Once you are familiar with your first AMT, you can start exploring any (one or more) of the following ideas:
+
+% \begin{itemize}
+% \item Experiment with different Melspectrogram parameters, such as n\_fft, n\_mels. Then report which parameters gives the best or worst results, and their respective training time.
+% \item Experiment with other spectrogram types such as STFT and CQT. Which spectrogram type is better for AMT?
+% \item Modify the model so that it predicts also the onsets of the musical notes. Does this extra task help with AMT performance?
+% \item After training a good model on piano music (MAPS dataset), does the same model perform well for other musical instruments?
+% \item Explore different model architectures to make the prediction accuracy as high as possible
+% \item Train a AMT model that predicts not only the pitch, but also the musical instrument of that pitch. You need to use other datasets for this direction, such as MusicNet. You might want to check what datasets are available in the AMAAI lab first \url{https://github.com/KinWaiCheuk/AudioLoader}
+% \end{itemize}
+
+% Contact \url{kinwai_cheuk@mymail.sutd.edu.sg} for more info. 
+
+% \paragraph{Deep audio representation learning -- multitask} Building on some of the resources from above: can we create clever embeddings for audio that are powerful to solve a multitude of tasks? Based on the HEAR challenge in NeurIPS, co-organized by Prof. Herremans. (advisors: prof. DH)
+% \url{https://neuralaudio.ai/hear2021-holistic-evaluation-of-audio-representations.html}
+
+
+
+
+
+%     \paragraph{Audio spoofing detection} Automatic speaker verification, such as every other biometric system, is vulnerable to spoofing
+% attacks. Using only a few minutes of recorded voice from a genuine client of a speaker verification system,
+% attackers can develop a variety of spoofing attacks that might trick such systems. Detecting these attacks
+% using the audio cues present in the recordings is an important challenge. Dataset can be found here: \url{https://www.idiap.ch/dataset/avspoof}. More recent datasets might be available.  
+
+
+% \paragraph{Speaker recognition} Related to the above topic is speaker recognition, which is a competition of the upcoming IEEE ASRU conference in Singapore mid-December: \url{https://www.nist.gov/itl/iad/mig/nist-2019-speaker-recognition-evaluation}
+% \paragraph{Music emotion prediction} Emotion prediction (in terms of valence / arousal or key words) from music. In addition to DEAM dataset, please ask TA Raven for access to a custom collected dataset. 
+
+
+% \paragraph{Music transcription} - Either in terms of chords or polyphonic music. This is an important, and very difficult problem. At each moment in time, we predict if there is a note onset and which pitch height is being played. Datasets include \href{https://homes.cs.washington.edu/~thickstn/musicnet.html}{musicnet}, \href{https://www.tsi.telecom-paristech.fr/aao/en/2010/07/08/maps-database-a-piano-database-for-multipitch-estimation-and-automatic-transcription-of-music/}{MAPS} and the huge \href{https://magenta.tensorflow.org/maestro-wave2midi2wave}{Maestro}
+%     \paragraph{Personality detection} Predict personality type of a person from his/her writing. Download the dataset from here - \url{https://github.com/SenticNet/personality-detection}
+
+
+
+% \section{Awards} 
+% \textbf{EPS Computer Systems Awards price} 
+% -- A total of 2,500 SGD will be awarded to the top project!!!
+
+\vspace{1em}
+
+% \noindent Tip: It is recommended that the students write their project as a technical report and upload to the arxiv. Something similar to this is often practiced at Stanford e.g., check out this project - \url{https://github.com/alpv95/MemeProject} and the corresponding paper - \url{https://arxiv.org/abs/1806.04510}. It was a project assignment of the cs224n class at Stanford CS which got so much attention from the press and deep learning community.
+
+\noindent If you need more ideas for inspiration, you can check this document. Please note that many of the projects listed in here are not yet defined broad enough (e.g. only one dataset or a small model scope), so please scale up according to the project requirements defined above. Rather they can server as general inspiration: \href{https://sutdapac-my.sharepoint.com/:w:/g/personal/nizam_kadir_mymail_sutd_edu_sg/IQDqVRQ8h50eTbhBnC2s0MsYAeVfCqCX30We0Kmlw_gPxq0?e=z62Tif}{SUTD SharePoint document link}.
+
+\end{document}
