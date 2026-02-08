@@ -1,6 +1,7 @@
 import yfinance as yf
 import pandas as pd
 import numpy as np
+import requests
 from datetime import datetime, timedelta
 
 def fetch_crypto_data(ticker="BTC-USD", start_date="2020-01-01", end_date=None):
@@ -75,12 +76,44 @@ def fetch_news_data(start_date="2020-01-01", end_date=None):
         
     return pd.DataFrame({'Date': dates, 'Headline': headlines})
 
+def fetch_fear_and_greed_index(limit=1000):
+    """
+    Fetches historical Fear and Greed Index data from alternative.me API.
+    Returns a DataFrame with 'Date' and 'FNG_Value'.
+    """
+    url = f"https://api.alternative.me/fng/?limit={limit}&format=json"
+    print(f"Fetching Fear & Greed Index (limit={limit})...")
+    
+    try:
+        response = requests.get(url)
+        data = response.json()
+        
+        if data['metadata']['error'] is not None:
+             print("Error fetching FNG data")
+             return pd.DataFrame()
+             
+        fng_data = []
+        for item in data['data']:
+            timestamp = int(item['timestamp'])
+            date = datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d')
+            value = int(item['value'])
+            classification = item['value_classification']
+            fng_data.append({'Date': date, 'FNG_Value': value, 'FNG_Class': classification})
+            
+        df = pd.DataFrame(fng_data)
+        df['Date'] = pd.to_datetime(df['Date'])
+        return df
+        
+    except Exception as e:
+        print(f"Exception during API call: {e}")
+        return pd.DataFrame()
+
 if __name__ == "__main__":
     # Test the functions
     df_price = fetch_crypto_data()
     print(f"Price Data: {df_price.shape}")
-    print(df_price.head())
     
-    df_news = fetch_news_data()
-    print(f"News Data: {df_news.shape}")
-    print(df_news.head())
+    df_fng = fetch_fear_and_greed_index(limit=100)
+    print(f"FNG Data: {df_fng.shape}")
+    if not df_fng.empty:
+        print(df_fng.head())

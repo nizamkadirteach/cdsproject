@@ -19,23 +19,27 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Data Pipeline}
+\frametitle{Data Pipeline & Multimodality}
 \begin{itemize}
-    \item \textbf{Collection:} Automated scripts fetching daily data.
-    \item \textbf{Processing:}
+    \item \textbf{Market Data (Quant):} Yahoo Finance (BTC-USD, ETH-USD).
+    \item \textbf{Sentiment Data (Qual):}
     \begin{itemize}
-        \item Normalized prices (0-1).
-        \item Aggregated daily sentiment scores.
+        \item **News Sentiment:** NLP analysis of headlines.
+        \item **Fear & Greed Index:** Real-time market emotion metric (0-100).
     \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Model Architecture}
+\frametitle{Enhanced User Interface}
 \begin{itemize}
-    \item \textbf{Type:} Stacked LSTM.
-    \item \textbf{Input:} Window of 60 days.
-    \item \textbf{Features:} Open, High, Low, Close, Volume, Sentiment\_Score.
+    \item **Tech Stack:** Streamlit + Plotly (Interactive).
+    \item **Features:**
+    \begin{itemize}
+        \item 3-Column Metric Dashboard.
+        \item Interactive Candlestick Courts with Sentiment Overlay.
+        \item Real-time Inference Tab.
+    \end{itemize}
 \end{itemize}
 \end{frame}
 

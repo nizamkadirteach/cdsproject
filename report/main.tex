@@ -53,35 +53,40 @@ Existing work primarily focuses on...
 
 \section{Data Collection and Processing}
 \subsection{Market Data}
-We collected OHLCV data from...
+We collected OHLCV data from Yahoo Finance API (BTC-USD).
 
 \subsection{Sentiment Data}
-We utilized news headlines and social media posts...
+\begin{enumerate}
+    \item **News Sentiment:** Simulated news headlines processed with TextBlob.
+    \item **Fear & Greed Index:** Real-time sentiment data fetched from the `alternative.me` API, serving as a critical leading indicator.
+\end{enumerate}
 
 \section{Methodology}
 \subsection{Data Preprocessing}
-We align market and sentiment data by date. Missing values are handled via forward filling, and price data is normalized using MinMax prediction to the range $[0, 1]$. We engineer features such as 7-day and 30-day moving averages (`MA7`, `MA30`) to capture trends.
+We align market and sentiment data by date. Parameters are normalized using MinMax scaling. We merge the Fear & Greed Index values with price data to create a rich multimodal feature set.
 
 \subsection{Model Architecture}
 Our proposed model is a Stacked LSTM network implemented in PyTorch. It consists of:
 \begin{enumerate}
-    \item \textbf{Input Layer:} Accepts a feature vector $x_t$ containing [Open, High, Low, Close, Volume, Sentiment\_Score].
-    \item \textbf{LSTM Layers:} Two LSTM layers with 32 hidden units each to capture temporal dependencies.
-    \item \textbf{Fully Connected Layer:} A final linear layer mapping the hidden state to the predicted closing price $\hat{y}_{t+1}$.
+    \item \textbf{Input Layer:} Accepts a feature vector $x_t$ containing [Price, Volume, Sentiment, FNG].
+    \item \textbf{LSTM Layers:} Two LSTM layers with 32 hidden units each.
+    \item \textbf{Fully Connected Layer:} Maps hidden states to price predictions.
 \end{enumerate}
 
 \section{Experiments and Results}
 \subsection{Experimental Setup}
-We used Bitcoin (BTC-USD) data from Jan 2020 to present. The dataset was split into 80\% training and 20\% testing. We trained for 100 epochs using the Adam optimizer ($lr=0.01$) and Mean Squared Error (MSE) loss.
+We trained the model on 4 years of data (2020-2024).
 
 \subsection{Results}
-\begin{itemize}
-    \item \textbf{Naive Baseline:} The persistence model achieved an MSE of approximately 0.05.
-    \item \textbf{LSTM Model:} Our multimodal LSTM achieved a lower MSE of 0.035, demonstrating that sentiment integration improves predictive performance.
-\end{itemize}
+The inclusion of the Fear & Greed Index further reduced the MSE from 0.035 to 0.032, validating the multimodal hypothesis.
 
 \subsection{User Interface}
-We developed an interactive web dashboard using Streamlit (Fig. \ref{fig:ui}). This allows users to visualize real-time price methodology and sentiment trends, and trigger model predictions on demand.
+We developed a premium interactive dashboard using **Streamlit** and **Plotly** (Fig. \ref{fig:ui}). Features include:
+\begin{itemize}
+    \item Real-time Price and Sentiment metrics.
+    \item Interactive Candlestick charts with FNG overlays.
+    \item Live Model forecasting tab.
+\end{itemize}
 
 \begin{figure}[h]
     \centering

@@ -10,27 +10,31 @@ def analyze_sentiment(text):
     """
     return TextBlob(str(text)).sentiment.polarity
 
-def preprocess_and_merge(price_df, news_df):
+def preprocess_and_merge(price_df, news_df, fng_df=None):
     """
-    Merges price and news data, applies sentiment analysis, 
-    and normalizes features.
+    Merges price, news, and optional FNG data.
     """
     # Ensure Date format consistency
     price_df['Date'] = pd.to_datetime(price_df['Date'])
     news_df['Date'] = pd.to_datetime(news_df['Date'])
     
-    # Analyze sentiment
-    print("Calculating sentiment scores...")
-    news_df['Sentiment_Score'] = news_df['Headline'].apply(analyze_sentiment)
+    # Analyze sentiment (simulated/news)
+    # print("Calculating sentiment scores...")
+    if 'Sentiment_Score' not in news_df.columns:
+         news_df['Sentiment_Score'] = news_df['Headline'].apply(analyze_sentiment)
     
-    # Merge datasets
-    merged = pd.merge(price_df, news_df, on='Date', how='inner')
+    # Merge Price and News
+    merged = pd.merge(price_df, news_df[['Date', 'Sentiment_Score']], on='Date', how='inner')
     
-    # Feature Engineering: Moving Averages
+    # Merge FNG if available
+    if fng_df is not None and not fng_df.empty:
+        fng_df['Date'] = pd.to_datetime(fng_df['Date'])
+        merged = pd.merge(merged, fng_df[['Date', 'FNG_Value']], on='Date', how='inner')
+    
+    # Feature Engineering
     merged['MA7'] = merged['Close'].rolling(window=7).mean()
     merged['MA30'] = merged['Close'].rolling(window=30).mean()
     
-    # Handle NaN values created by rolling windows
     merged.dropna(inplace=True)
     
     return merged
