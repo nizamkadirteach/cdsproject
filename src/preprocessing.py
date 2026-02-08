@@ -32,10 +32,13 @@ def preprocess_and_merge(price_df, news_df, fng_df=None):
         merged = pd.merge(merged, fng_df[['Date', 'FNG_Value']], on='Date', how='inner')
     
     # Feature Engineering
-    merged['MA7'] = merged['Close'].rolling(window=7).mean()
-    merged['MA30'] = merged['Close'].rolling(window=30).mean()
+    # Use min_periods=1 to allow calculation on smaller datasets (for testing/early data)
+    merged['MA7'] = merged['Close'].rolling(window=7, min_periods=1).mean()
+    merged['MA30'] = merged['Close'].rolling(window=30, min_periods=1).mean()
     
-    merged.dropna(inplace=True)
+    # merged.dropna(inplace=True) # data might be scarce in testing
+    # Only drop if critical features are missing
+    merged.dropna(subset=['Close', 'Sentiment_Score'], inplace=True)
     
     return merged
 
