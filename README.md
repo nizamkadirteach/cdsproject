@@ -12,9 +12,9 @@
 
 ## 📸 Dashboard Preview
 
-![Dashboard Screenshot](docs/images/dashboard.png)
+![Live Dashboard Screenshot](docs/images/dashboard-live.png)
 
-*The interactive CryptoPulse Dashboard featuring real-time price tracking, Fear & Greed Index overlays, and LSTM-based future forecasting.*
+*The actual interactive CryptoPulse Dashboard running on localhost.*
 
 ---
 
