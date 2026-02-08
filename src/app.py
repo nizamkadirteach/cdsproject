@@ -27,6 +27,7 @@ st.markdown("""
     
     html, body, [class*="css"] {
         font-family: 'Inter', sans-serif;
+        color: #E0E0E0;
     }
 
     /* Gradient Background for App */
@@ -49,16 +50,34 @@ st.markdown("""
         border-color: #00ADB5;
     }
     
+    /* Force Light Text for Metrics */
+    div[data-testid="metric-container"] label {
+        color: #B2BEC3 !important;
+    }
+    div[data-testid="metric-container"] div[data-testid="stMetricValue"] {
+        color: #FFFFFF !important;
+    }
+    
     /* Headers */
+    h1, h2, h3, h4, h5, h6 {
+        color: #EEEEEE !important;
+        font-weight: 800;
+    }
+    
     h1 {
         background: -webkit-linear-gradient(45deg, #00ADB5, #EEEEEE);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-weight: 800;
     }
     
-    h3 {
-        color: #B2BEC3;
+    /* Sidebar Text */
+    [data-testid="stSidebar"] p, [data-testid="stSidebar"] span {
+        color: #dfe6e9;
+    }
+    
+    /* Widget Labels */
+    .stSelectbox label, .stDateInput label, .stCheckbox label, .stToggle label, .stSlider label {
+        color: #dfe6e9 !important;
     }
 
     /* Sidebar */
