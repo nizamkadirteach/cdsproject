@@ -113,23 +113,26 @@ with st.sidebar:
     st.divider()
     
     st.markdown("### 🛠️ settings")
-    ticker = st.selectbox("Asset Ticker", ["BTC-USD", "ETH-USD", "SOL-USD", "XRP-USD"], index=0)
+    ticker = st.selectbox("Asset Ticker", ["BTC-USD", "ETH-USD", "SOL-USD", "XRP-USD"], index=0, help="Select the cryptocurrency pair to analyze.")
     
     # Date Range
     col_d1, col_d2 = st.columns(2)
-    start_date = col_d1.date_input("Start", datetime.now() - timedelta(days=365))
-    end_date = col_d2.date_input("End", datetime.now())
+    start_date = col_d1.date_input("Start", datetime.now() - timedelta(days=365), help="Data fetch start date.")
+    end_date = col_d2.date_input("End", datetime.now(), help="Data fetch end date.")
     
     st.divider()
     
     st.markdown("### 📡 Data Streams")
-    st.checkbox("Market Data (Yahoo)", value=True, disabled=True)
-    st.checkbox("Social Sentiment (NLP)", value=True, disabled=True)
-    fng_on = st.checkbox("Fear & Greed Index", value=True)
+    st.checkbox("Market Data (Yahoo)", value=True, disabled=True, help="OHLCV data from Yahoo Finance.")
+    st.checkbox("Social Sentiment (NLP)", value=True, disabled=True, help="Simulated NLP analysis of news headlines.")
+    fng_on = st.checkbox("Fear & Greed Index", value=True, help="Real-time market emotion metric from alternative.me.")
     
     st.markdown("### 📊 Indicators")
-    show_ma = st.toggle("Moving Averages", value=True)
-    show_bb = st.toggle("Bollinger Bands", value=False)
+    show_ma = st.toggle("Moving Averages", value=True, help="Show 7-day and 30-day Simple Moving Averages.")
+    show_bb = st.toggle("Bollinger Bands", value=False, help="Show Volatility Bands (20-day SMA ± 2 STD).")
+    
+    st.markdown("---")
+    st.info("💡 **Pro Tip:** Toggle 'Bollinger Bands' to spot potential breakouts.")
 
 # -----------------------------------------------------------------------------
 # 4. Data Loading
@@ -175,9 +178,9 @@ if df.empty:
 col_head1, col_head2 = st.columns([3, 1])
 with col_head1:
     st.title("Market Intelligence Terminal")
-    st.markdown(f"**Asset:** {ticker} | **Status:** 🟢 Live")
+    st.markdown(f"**Asset:** {ticker} | **Status:** 🟢 Live Connection")
 with col_head2:
-    if st.button("🔄 Refresh Data"):
+    if st.button("🔄 Refresh Data", help="Clear cache and fetch latest data"):
         st.cache_data.clear()
         st.rerun()
 
@@ -197,7 +200,7 @@ col3.metric("🧠 AI Sentiment", f"{latest['Sentiment_Score']:.2f}", f"{(latest[
 col4.metric("😨 Fear & Greed", f"{int(latest['FNG_Value'])}", f"{int(latest['FNG_Value']-prev['FNG_Value'])}")
 
 # Charting Area (Tabbed)
-tabs = st.tabs(["📉 Technical Analysis", "🔮 AI Forecast", "📑 Reports"])
+tabs = st.tabs(["📉 Technical Analysis", "🔮 AI Forecast", "📑 Reports", "💾 Data Export"])
 
 with tabs[0]:
     # Advanced Plotly Chart
@@ -298,3 +301,19 @@ with tabs[2]:
     ```
     """)
     st.warning("Disclaimer: This is a data science project for educational purposes. Not financial advice.")
+
+with tabs[3]:
+    st.markdown("### 💾 Export Data")
+    st.write("Download the processed dataset for your own analysis.")
+    
+    csv = df.to_csv(index=False).encode('utf-8')
+    
+    st.download_button(
+        label="📥 Download Dataset (CSV)",
+        data=csv,
+        file_name=f'cryptopulse_{ticker}_{datetime.now().strftime("%Y%m%d")}.csv',
+        mime='text/csv',
+    )
+    
+    st.markdown("#### Dataset Preview")
+    st.dataframe(df.head(10))
