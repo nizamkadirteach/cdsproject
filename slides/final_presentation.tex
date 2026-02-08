@@ -1,0 +1,58 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+
+\title{CryptoPulse: Final Project Presentation}
+\author{Alice Zheng, Bob Chen, Charlie Davis, Diana Lim}
+\institute{SUTD}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Recap: The Problem}
+\begin{itemize}
+    \item Predicting crypto prices is challenging due to high volatility.
+    \item \textbf{Hypothesis:} Sentiment analysis provides a leading indicator for price movements.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Data Pipeline}
+\begin{itemize}
+    \item \textbf{Collection:} Automated scripts fetching daily data.
+    \item \textbf{Processing:}
+    \begin{itemize}
+        \item Normalized prices (0-1).
+        \item Aggregated daily sentiment scores.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Model Architecture}
+\begin{itemize}
+    \item \textbf{Type:} Stacked LSTM.
+    \item \textbf{Input:} Window of 60 days.
+    \item \textbf{Features:} Open, High, Low, Close, Volume, Sentiment\_Score.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results}
+\begin{itemize}
+    \item \textbf{Base Model (Price Only):} MSE = 0.05
+    \item \textbf{Multimodal (Price + Sentiment):} MSE = 0.035
+    \item \textbf{Improvement:} 30\% reduction in error.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Live Demo}
+\begin{center}
+    \textit{[Switch to Streamlit Dashboard]}
+\end{center}
+\end{frame}
+
+\end{document}

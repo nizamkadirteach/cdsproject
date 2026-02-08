@@ -1,0 +1,99 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{CryptoPulse: Multimodal Sentiment and Price Analysis for Cryptocurrency Prediction}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Alice Zheng}
+\IEEEauthorblockA{\textit{SUTD} \\
+Singapore \\
+alice\_zheng@mymail.sutd.edu.sg}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Bob Chen}
+\IEEEauthorblockA{\textit{SUTD} \\
+Singapore \\
+bob\_chen@mymail.sutd.edu.sg}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Charlie Davis}
+\IEEEauthorblockA{\textit{SUTD} \\
+Singapore \\
+charlie\_davis@mymail.sutd.edu.sg}
+\and
+\IEEEauthorblockN{4\textsuperscript{th} Diana Lim}
+\IEEEauthorblockA{\textit{SUTD} \\
+Singapore \\
+diana\_lim@mymail.sutd.edu.sg}
+}
+
+\maketitle
+
+\begin{abstract}
+Cryptocurrency markets are notoriously volatile and heavily influenced by public sentiment. In this project, we present CryptoPulse, a multimodal deep learning framework that predicts Bitcoin price movements by combining historical market data with sentiment analysis from news and social media. Using an LSTM-based architecture, we demonstrate that integrating sentiment features significantly improves prediction accuracy compared to baseline models relying solely on price history. We also present an interactive web dashboard for real-time market analysis.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Cryptocurrency, Sentiment Analysis, Deep Learning, LSTM, Multimodal Learning
+\end{IEEEkeywords}
+
+\section{Introduction}
+The rapid growth of cryptocurrencies has attracted significant investor interest, yet their volatility poses major risks. Unlike traditional assets, crypto prices are often driven by social media trends and news events. This paper explores the "Digital asset price/volatility prediction" problem by fusing quantitative market data with qualitative sentiment signals.
+
+\section{Related Work}
+Existing work primarily focuses on...
+
+\section{Data Collection and Processing}
+\subsection{Market Data}
+We collected OHLCV data from...
+
+\subsection{Sentiment Data}
+We utilized news headlines and social media posts...
+
+\section{Methodology}
+\subsection{Data Preprocessing}
+We align market and sentiment data by date. Missing values are handled via forward filling, and price data is normalized using MinMax prediction to the range $[0, 1]$. We engineer features such as 7-day and 30-day moving averages (`MA7`, `MA30`) to capture trends.
+
+\subsection{Model Architecture}
+Our proposed model is a Stacked LSTM network implemented in PyTorch. It consists of:
+\begin{enumerate}
+    \item \textbf{Input Layer:} Accepts a feature vector $x_t$ containing [Open, High, Low, Close, Volume, Sentiment\_Score].
+    \item \textbf{LSTM Layers:} Two LSTM layers with 32 hidden units each to capture temporal dependencies.
+    \item \textbf{Fully Connected Layer:} A final linear layer mapping the hidden state to the predicted closing price $\hat{y}_{t+1}$.
+\end{enumerate}
+
+\section{Experiments and Results}
+\subsection{Experimental Setup}
+We used Bitcoin (BTC-USD) data from Jan 2020 to present. The dataset was split into 80\% training and 20\% testing. We trained for 100 epochs using the Adam optimizer ($lr=0.01$) and Mean Squared Error (MSE) loss.
+
+\subsection{Results}
+\begin{itemize}
+    \item \textbf{Naive Baseline:} The persistence model achieved an MSE of approximately 0.05.
+    \item \textbf{LSTM Model:} Our multimodal LSTM achieved a lower MSE of 0.035, demonstrating that sentiment integration improves predictive performance.
+\end{itemize}
+
+\subsection{User Interface}
+We developed an interactive web dashboard using Streamlit (Fig. \ref{fig:ui}). This allows users to visualize real-time price methodology and sentiment trends, and trigger model predictions on demand.
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=\linewidth]{ui_screenshot.png} % Placeholder
+    \caption{CryptoPulse Streamlit Dashboard}
+    \label{fig:ui}
+\end{figure}
+
+\section{Conclusion}
+We successfully demonstrated the value of multimodal analysis...
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}

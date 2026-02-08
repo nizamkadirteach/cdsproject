@@ -5,3 +5,8 @@ seaborn
 scikit-learn
 jupyter
 notebook
+yfinance
+textblob
+streamlit
+torch
+openpyxl
