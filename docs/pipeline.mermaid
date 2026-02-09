@@ -1,0 +1,38 @@
+graph TD
+    %% Data Collection Layer
+    subgraph Data_Collection [1. Data Collection]
+        style Data_Collection fill:#2d3436,stroke:#dfe6e9,color:#dfe6e9
+        A[Yahoo Finance API<br/>(OHLCV)] -->|Raw Prices| D(Data Merger)
+        B[TextBlob NLP<br/>(News Mock)] -->|Sentiment Score| D
+        C[Alternative.me API<br/>(Fear & Greed)] -->|FNG Index| D
+    end
+
+    %% Preprocessing Layer
+    subgraph Preprocessing [2. Preprocessing]
+        style Preprocessing fill:#2d3436,stroke:#00cec9,color:#dfe6e9
+        D --> E{Alignment & Cleaning}
+        E -->|Fill NaNs| F[Feature Engineering]
+        F --> G[Normalization<br/>(0-1 Scaling)]
+        G --> H[Train/Test Split<br/>(80/20)]
+        H --> I[Windowing<br/>(60-day Lookback)]
+    end
+
+    %% Model Layer
+    subgraph Model [3. Deep Learning]
+        style Model fill:#2d3436,stroke:#fdcb6e,color:#dfe6e9
+        I --> J[Stacked LSTM<br/>(2 Layers, 32 Units)]
+        J --> K[Fully Connected Layer]
+        K --> L(Price Prediction)
+    end
+
+    %% Application Layer
+    subgraph App [4. User Interface]
+        style App fill:#2d3436,stroke:#ff7675,color:#dfe6e9
+        L --> M[Streamlit Dashboard]
+        F --> M
+        M --> N[Interactive Plots<br/>(Plotly)]
+        M --> O[Data Export<br/>(CSV)]
+    end
+
+    %% Styling
+    classDef default fill:#1e272e,stroke:#636e72,color:#fff;
