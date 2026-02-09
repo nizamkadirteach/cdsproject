@@ -295,9 +295,9 @@ with tabs[2]:
     ```python
     class CryptoLSTM(nn.Module):
         def __init__(self):
-            # Bidirectional LSTM with Attention Mechanism
-            self.lstm = nn.LSTM(input_size=4, hidden_size=64, num_layers=2, dropout=0.2)
-            self.head = nn.Linear(64, 1)
+            # Stacked LSTM (2 Layers)
+            self.lstm = nn.LSTM(input_size=4, hidden_size=32, num_layers=2, batch_first=True)
+            self.fc = nn.Linear(32, 1)
     ```
     """)
     st.warning("Disclaimer: This is a data science project for educational purposes. Not financial advice.")
