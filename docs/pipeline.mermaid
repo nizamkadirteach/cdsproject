@@ -20,18 +20,18 @@ graph TD
     %% Model Layer
     subgraph Model [3. Deep Learning]
         style Model fill:#2d3436,stroke:#fdcb6e,color:#dfe6e9
-        I --> J[Stacked LSTM<br/>(2 Layers, 32 Units)]
-        J --> K[Fully Connected Layer]
-        K --> L(Price Prediction)
+        I --> J["Stacked LSTM<br/>(2 Layers, 32 Units)"]
+        J --> K["Fully Connected Layer"]
+        K --> L("Price Prediction")
     end
 
     %% Application Layer
     subgraph App [4. User Interface]
         style App fill:#2d3436,stroke:#ff7675,color:#dfe6e9
-        L --> M[Streamlit Dashboard]
+        L --> M["Streamlit Dashboard"]
         F --> M
-        M --> N[Interactive Plots<br/>(Plotly)]
-        M --> O[Data Export<br/>(CSV)]
+        M --> N["Interactive Plots<br/>(Plotly)"]
+        M --> O["Data Export<br/>(CSV)"]
     end
 
     %% Styling
