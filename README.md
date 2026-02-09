@@ -51,9 +51,9 @@ graph TD
     %% Data Collection Layer
     subgraph Data_Collection [1. Data Collection]
         style Data_Collection fill:#2d3436,stroke:#dfe6e9,color:#dfe6e9
-        A[Yahoo Finance API<br/>(OHLCV)] -->|Raw Prices| D(Data Merger)
-        B[TextBlob NLP<br/>(News Mock)] -->|Sentiment Score| D
-        C[Alternative.me API<br/>(Fear & Greed)] -->|FNG Index| D
+        A["Yahoo Finance API<br/>(OHLCV)"] -->|Raw Prices| D("Data Merger")
+        B["TextBlob NLP<br/>(News Mock)"] -->|Sentiment Score| D
+        C["Alternative.me API<br/>(Fear & Greed)"] -->|FNG Index| D
     end
 
     %% Preprocessing Layer
