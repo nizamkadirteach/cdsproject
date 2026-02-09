@@ -59,11 +59,11 @@ graph TD
     %% Preprocessing Layer
     subgraph Preprocessing [2. Preprocessing]
         style Preprocessing fill:#2d3436,stroke:#00cec9,color:#dfe6e9
-        D --> E{Alignment & Cleaning}
+        D --> E{"Alignment & Cleaning"}
         E -->|Fill NaNs| F[Feature Engineering]
-        F --> G[Normalization<br/>(0-1 Scaling)]
-        G --> H[Train/Test Split<br/>(80/20)]
-        H --> I[Windowing<br/>(60-day Lookback)]
+        F --> G["Normalization<br/>(0-1 Scaling)"]
+        G --> H["Train/Test Split<br/>(80/20)"]
+        H --> I["Windowing<br/>(60-day Lookback)"]
     end
 
     %% Model Layer
